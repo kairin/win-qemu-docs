@@ -2,6 +2,7 @@
 import '../styles/app.css';
 import StarField from '../components/StarField.astro';
 import SearchModal from '../components/SearchModal.astro';
+import Timeline from '../components/Timeline.astro';
 
 interface Props {
   title: string;
@@ -15,7 +16,6 @@ const navItems = [
   { href: 'installation', label: 'Installation' },
   { href: 'performance', label: 'Performance' },
   { href: 'security', label: 'Security' },
-  { href: 'agents', label: 'Agents' },
   { href: 'changelog', label: 'Changelog' },
 ];
 ---
@@ -27,6 +27,22 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kairin.github.io/win-qemu-docs/" />
+    <meta property="og:title" content="QEMU/KVM Windows 11 Virtualization" />
+    <meta property="og:description" content="Run Windows 11 on Ubuntu with 85-95% native performance using QEMU/KVM, VirtIO, and Hyper-V enlightenments." />
+    <meta property="og:image" content="https://kairin.github.io/win-qemu-docs/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="QEMU/KVM Windows 11 Virtualization" />
+    <meta name="twitter:description" content="Run Windows 11 on Ubuntu with 85-95% native performance using QEMU/KVM, VirtIO, and Hyper-V enlightenments." />
+    <meta name="twitter:image" content="https://kairin.github.io/win-qemu-docs/og-image.png" />
+
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,7 +111,7 @@ const navItems = [
                 <!-- Description -->
                 <p class="mt-4 text-sm/6 text-base-content/70">
                   Run native Microsoft 365 Outlook on Ubuntu 25.10 with <strong class="text-base-content">85-95% native performance</strong>.
-                  Complete automation with 62 AI agents and 9 slash commands.
+                  VirtIO drivers, 14 Hyper-V enlightenments, and 60+ security hardening checks.
                 </p>
 
                 <!-- CTA buttons -->
@@ -151,24 +167,8 @@ const navItems = [
         </div>
       </aside>
 
-      <!-- Timeline decoration -->
-      <div class="pointer-events-none absolute inset-0 z-50 overflow-hidden lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem] lg:overflow-visible hidden lg:block">
-        <svg
-          class="absolute top-0 left-[max(0px,calc(50%-18.125rem))] h-full w-1.5 lg:left-full lg:ml-1 xl:right-1 xl:left-auto xl:ml-0"
-          aria-hidden="true"
-        >
-          <defs>
-            <pattern id="timeline-pattern" width="6" height="8" patternUnits="userSpaceOnUse">
-              <path
-                d="M0 0H6M0 8H6"
-                class="stroke-primary/10"
-                fill="none"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#timeline-pattern)" />
-        </svg>
-      </div>
+      <!-- Timeline with scroll-linked marker -->
+      <Timeline />
 
       <!-- Theme toggle (fixed position) -->
       <button

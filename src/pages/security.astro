@@ -207,9 +207,6 @@ sudo ufw status verbose`}
       code={`# Run full security audit
 ./scripts/configure-security.sh --audit
 
-# Or use slash command
-/guardian-security
-
 # This checks:
 # - LUKS encryption status
 # - UFW firewall rules
@@ -224,8 +221,8 @@ sudo ufw status verbose`}
   <!-- Navigation -->
   <section class="mt-12 fade-in">
     <div class="flex flex-wrap gap-4">
-      <a href={`${import.meta.env.BASE_URL}agents`} class="btn btn-primary">
-        AI Agent System
+      <a href={`${import.meta.env.BASE_URL}changelog`} class="btn btn-primary">
+        View Changelog
         <span aria-hidden="true">&rarr;</span>
       </a>
       <a href={`${import.meta.env.BASE_URL}performance`} class="btn btn-ghost">Back to Performance</a>
