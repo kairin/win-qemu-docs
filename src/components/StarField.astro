@@ -1,0 +1,170 @@
+---
+/**
+ * StarField - Animated constellation background
+ * CSS-based animated star field with constellation connections
+ * Inspired by Tailwind Commit design
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+// Star positions: [x, y, dim?, blur?]
+const stars = [
+  [4, 4, true, true],
+  [4, 44, true, false],
+  [36, 22, false, false],
+  [50, 146, true, true],
+  [64, 43, true, true],
+  [76, 30, true, false],
+  [101, 116, false, false],
+  [140, 36, true, false],
+  [149, 134, false, false],
+  [162, 74, true, false],
+  [171, 96, true, true],
+  [210, 56, true, true],
+  [235, 90, false, false],
+  [275, 82, true, true],
+  [306, 6, false, false],
+  [307, 64, true, true],
+  [380, 68, true, false],
+  [380, 108, true, true],
+  [391, 148, true, true],
+  [405, 18, true, false],
+  [412, 86, true, true],
+  [426, 210, true, true],
+  [427, 56, true, true],
+  [538, 138, false, false],
+  [563, 88, true, true],
+  [611, 154, true, true],
+  [637, 150, false, false],
+  [651, 146, true, false],
+  [682, 70, true, true],
+  [683, 128, false, false],
+  [781, 82, true, true],
+  [785, 158, true, false],
+  [832, 146, true, true],
+  [852, 89, false, false],
+];
+
+// Constellation paths: arrays of [x, y] points
+const constellations = [
+  [[247, 103], [261, 86], [307, 104], [357, 36]],
+  [[586, 120], [516, 100], [491, 62], [440, 107], [477, 180], [516, 100]],
+  [[733, 100], [803, 120], [879, 113], [823, 164], [803, 120]],
+];
+
+const uniqueId = `starfield-${Math.random().toString(36).slice(2, 11)}`;
+---
+
+<svg
+  viewBox="0 0 881 211"
+  fill="white"
+  aria-hidden="true"
+  class:list={[
+    'pointer-events-none absolute w-[55rem] origin-top-right rotate-[30deg] overflow-visible opacity-70',
+    className
+  ]}
+>
+  <defs>
+    <filter id={`${uniqueId}-blur`}>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Constellation lines -->
+  {constellations.map((points, i) => (
+    <path
+      class="constellation-path"
+      stroke="currentColor"
+      stroke-opacity="0.2"
+      stroke-dasharray="1"
+      stroke-dashoffset="1"
+      pathLength="1"
+      fill="transparent"
+      d={`M ${points.map(p => p.join(',')).join(' L ')}`}
+      style={`animation-delay: ${(i + 1) * 1.5}s`}
+    />
+  ))}
+
+  <!-- Stars -->
+  {stars.map(([x, y, dim, blur], i) => (
+    <g
+      class="star-group"
+      style={`animation-delay: ${Math.random() * 2}s`}
+    >
+      <circle
+        cx={x}
+        cy={y}
+        r="1"
+        class:list={[
+          'star',
+          dim ? 'star-dim' : 'star-bright'
+        ]}
+        filter={blur ? `url(#${uniqueId}-blur)` : undefined}
+        style={`
+          transform-origin: ${x / 16}rem ${y / 16}rem;
+          animation-delay: ${Math.random() * 4}s;
+        `}
+      />
+    </g>
+  ))}
+</svg>
+
+<style>
+  .star-group {
+    opacity: 0;
+    animation: fadeInStar 4s ease-out forwards;
+  }
+
+  .star {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+
+  .star-dim {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  .star-bright {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .constellation-path {
+    animation: drawConstellation 5s ease-out forwards;
+    visibility: hidden;
+  }
+
+  @keyframes fadeInStar {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: inherit;
+      transform: inherit;
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes drawConstellation {
+    0% {
+      stroke-dashoffset: 1;
+      visibility: visible;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      visibility: visible;
+    }
+  }
+</style>
