@@ -9,7 +9,7 @@ import CodeBlock from '../components/CodeBlock.astro';
     <div class="mb-8">
       <div class="breadcrumbs text-sm mb-4">
         <ul>
-          <li><a href="/">Home</a></li>
+          <li><a href={import.meta.env.BASE_URL}>Home</a></li>
           <li>Performance</li>
         </ul>
       </div>
@@ -276,13 +276,13 @@ vm.nr_hugepages = 4096
     <!-- Next Steps -->
     <div class="mt-12">
       <div class="flex flex-wrap gap-4">
-        <a href="/security" class="btn btn-primary">
+        <a href={`${import.meta.env.BASE_URL}security`} class="btn btn-primary">
           Security Hardening
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
-        <a href="/installation" class="btn btn-outline">Back to Installation</a>
+        <a href={`${import.meta.env.BASE_URL}installation`} class="btn btn-outline">Back to Installation</a>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import ProgressTracker from '../components/ProgressTracker.astro';
     <div class="mb-8">
       <div class="breadcrumbs text-sm mb-4">
         <ul>
-          <li><a href="/">Home</a></li>
+          <li><a href={import.meta.env.BASE_URL}>Home</a></li>
           <li>Installation</li>
         </ul>
       </div>
@@ -172,14 +172,14 @@ wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-vir
     <div class="mt-12">
       <h2 class="text-2xl font-bold mb-6">Next Steps</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="/performance" class="card bg-base-200 hover:bg-base-300 transition-colors">
+        <a href={`${import.meta.env.BASE_URL}performance`} class="card bg-base-200 hover:bg-base-300 transition-colors">
           <div class="card-body">
             <h3 class="card-title">Performance Optimization</h3>
             <p class="text-sm text-base-content/70">Apply 14 Hyper-V enlightenments for 85-95% native performance</p>
             <div class="badge badge-primary">Recommended</div>
           </div>
         </a>
-        <a href="/security" class="card bg-base-200 hover:bg-base-300 transition-colors">
+        <a href={`${import.meta.env.BASE_URL}security`} class="card bg-base-200 hover:bg-base-300 transition-colors">
           <div class="card-body">
             <h3 class="card-title">Security Hardening</h3>
             <p class="text-sm text-base-content/70">Apply 60+ security hardening checklist items</p>

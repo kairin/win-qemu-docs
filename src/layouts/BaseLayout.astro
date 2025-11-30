@@ -17,7 +17,7 @@ const { title, description = 'QEMU/KVM Windows 11 Virtualization Documentation' 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <title>{title} | QEMU/KVM Docs</title>
 
     <!-- Theme toggle script (runs before paint to prevent flash) -->
@@ -31,18 +31,18 @@ const { title, description = 'QEMU/KVM Windows 11 Virtualization Documentation' 
     <!-- Navigation -->
     <nav class="navbar bg-base-200 sticky top-0 z-50 shadow-xs">
       <div class="navbar-start">
-        <a href="/" class="btn btn-ghost text-xl font-bold">
+        <a href={import.meta.env.BASE_URL} class="btn btn-ghost text-xl font-bold">
           <span class="text-primary">QEMU</span>
           <span class="text-secondary">/KVM</span>
         </a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal gap-2 px-1">
-          <li><a href="/overview" class="hover:text-primary">Overview</a></li>
-          <li><a href="/installation" class="hover:text-primary">Installation</a></li>
-          <li><a href="/performance" class="hover:text-primary">Performance</a></li>
-          <li><a href="/security" class="hover:text-primary">Security</a></li>
-          <li><a href="/agents" class="hover:text-primary">Agents</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}overview`} class="hover:text-primary">Overview</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}installation`} class="hover:text-primary">Installation</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}performance`} class="hover:text-primary">Performance</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}security`} class="hover:text-primary">Security</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}agents`} class="hover:text-primary">Agents</a></li>
         </ul>
       </div>
       <div class="navbar-end gap-2">
@@ -78,11 +78,11 @@ const { title, description = 'QEMU/KVM Windows 11 Virtualization Documentation' 
             </svg>
           </div>
           <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-200 rounded-sm z-[1] mt-3 w-52 p-2 shadow-sm">
-            <li><a href="/overview">Overview</a></li>
-            <li><a href="/installation">Installation</a></li>
-            <li><a href="/performance">Performance</a></li>
-            <li><a href="/security">Security</a></li>
-            <li><a href="/agents">Agents</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}overview`}>Overview</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}installation`}>Installation</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}performance`}>Performance</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}security`}>Security</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}agents`}>Agents</a></li>
           </ul>
         </div>
       </div>
@@ -110,8 +110,8 @@ const { title, description = 'QEMU/KVM Windows 11 Virtualization Documentation' 
       <nav>
         <div class="grid grid-flow-col gap-4">
           <a href="https://github.com/kairin/win-qemu-docs" class="link link-hover">GitHub</a>
-          <a href="/overview" class="link link-hover">Documentation</a>
-          <a href="/changelog" class="link link-hover">Changelog</a>
+          <a href={`${import.meta.env.BASE_URL}overview`} class="link link-hover">Documentation</a>
+          <a href={`${import.meta.env.BASE_URL}changelog`} class="link link-hover">Changelog</a>
         </div>
       </nav>
     </footer>
