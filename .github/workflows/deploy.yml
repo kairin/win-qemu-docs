@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       use_self_hosted:
-        description: 'Use self-hosted runner'
-        required: true
-        default: 'true'
+        description: 'Use self-hosted runner (requires configured runner)'
+        required: false
+        default: 'false'
         type: boolean
 
 permissions:
